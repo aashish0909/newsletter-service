@@ -15,3 +15,6 @@ app.listen(port, () => {
 });
 
 connectDB();
+
+app.use("/api/content", require("./routes/contentRoute"));
+app.use("/api/category", require("./routes/categoryRoute"));
