@@ -5,6 +5,13 @@ module.exports.addUser = async (req, res) => {
   try {
     const { name, email, topics } = req.body;
 
+    let user = await User.findOne({ email: email });
+    if (user) {
+      return res
+        .status(400)
+        .json({ message: "This email has already been subscribed" });
+    }
+
     const newTopics = [];
     for (const element of topics) {
       const newCat = await Category.findOne({ id: element });
