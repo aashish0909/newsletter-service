@@ -3,7 +3,7 @@ const Category = require("../models/Category");
 
 module.exports.addUser = async (req, res) => {
   try {
-    const { email, topics } = req.body;
+    const { name, email, topics } = req.body;
 
     const newTopics = [];
     for (const element of topics) {
@@ -15,6 +15,7 @@ module.exports.addUser = async (req, res) => {
     }
 
     const newUser = new User({
+      name,
       email,
       topics: newTopics,
     });
