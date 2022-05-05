@@ -54,11 +54,11 @@ module.exports.getUsersbyTopic = async (req, res) => {
 
     const users = await User.find({
       topics: { $all: newTopics },
-    }).populate("topics", "title -_id");
+    })
+      .populate("topics", "title -_id")
+      .select("email name -_id -topics");
 
-    res.status(200).json({
-      users,
-    });
+    res.status(200).json(users);
   } catch (err) {
     res.status(500).json({
       message: err.message,
