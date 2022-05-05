@@ -18,3 +18,4 @@ connectDB();
 
 app.use("/api/content", require("./routes/contentRoute"));
 app.use("/api/category", require("./routes/categoryRoute"));
+app.use("/api/user", require("./routes/userRoute"));
