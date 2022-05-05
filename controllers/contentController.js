@@ -1,5 +1,7 @@
 const Content = require("../models/Content");
 const Category = require("../models/Category");
+const User = require("../models/User");
+const sendEmail = require("../sendEmail");
 
 module.exports.addContent = async (req, res) => {
   try {
@@ -21,6 +23,14 @@ module.exports.addContent = async (req, res) => {
     });
 
     await newContent.save();
+
+    const users = await User.find({
+      topics: { $all: newCategory },
+    })
+      .populate("topics", "title -_id")
+      .select("email name -_id -topics");
+
+    await sendEmail(title, content, users);
 
     res.status(200).json({
       message: "Content added successfully",

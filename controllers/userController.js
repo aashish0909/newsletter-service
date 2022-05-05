@@ -39,31 +39,12 @@ module.exports.addUser = async (req, res) => {
   }
 };
 
-module.exports.getUsersbyTopic = async (req, res) => {
-  try {
-    const { topic } = req.body;
-
-    const newTopics = [];
-    for (const element of topic) {
-      const newCat = await Category.findOne({ id: element });
-      if (newCat) newTopics.push(newCat._id.toString());
-      else {
-        throw new Error("Topic with id " + element + " not found");
-      }
-    }
-
-    const users = await User.find({
-      topics: { $all: newTopics },
-    })
-      .populate("topics", "title -_id")
-      .select("email name -_id -topics");
-
-    res.status(200).json(users);
-  } catch (err) {
-    res.status(500).json({
-      message: err.message,
-    });
-  }
+module.exports.getUsersbyTopic = async ({ newCategory }) => {
+  return User.find({
+    topics: { $all: newCategory },
+  })
+    .populate("topics", "title -_id")
+    .select("email name -_id -topics");
 };
 
 module.exports.getUsers = async (_req, res) => {
