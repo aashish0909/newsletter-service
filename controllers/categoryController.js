@@ -2,9 +2,10 @@ const Category = require("../models/Category");
 
 module.exports.addCategory = async (req, res) => {
   try {
-    const { title } = req.body;
+    const { title, id } = req.body;
     const newCategory = new Category({
       title,
+      id,
     });
     await newCategory.save();
     res.status(200).json({

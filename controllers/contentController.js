@@ -1,13 +1,23 @@
 const Content = require("../models/Content");
+const Category = require("../models/Category");
 
 module.exports.addContent = async (req, res) => {
   try {
     const { title, content, category } = req.body;
 
+    const newCategory = [];
+    for (const element of category) {
+      const newCat = await Category.findOne({ id: element });
+      if (newCat) newCategory.push(newCat._id.toString());
+      else {
+        throw new Error("Category with id " + element + " not found");
+      }
+    }
+
     const newContent = new Content({
       title,
       content,
-      category,
+      category: newCategory,
     });
 
     await newContent.save();
