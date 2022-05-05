@@ -5,7 +5,6 @@ SibApiV3Sdk.ApiClient.instance.authentications["api-key"].apiKey =
   process.env.SMTP_API_KEY;
 
 function sendEmail(title, content, date, users) {
-  console.log(date);
   var apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
   var sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail(); // SendSmtpEmail | The transactional email to send.
 

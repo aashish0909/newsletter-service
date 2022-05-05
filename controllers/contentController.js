@@ -30,6 +30,7 @@ module.exports.addContent = async (req, res) => {
       title,
       content,
       category: newCategory,
+      time: date,
     });
 
     await newContent.save();
