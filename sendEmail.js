@@ -11,8 +11,11 @@ function sendEmail(title, content, date, users) {
   sendSmtpEmail = {
     subject: `${title}`,
     scheduledAt: `${date}`,
-    sender: { email: "anytimenews101@gmail.com", name: "AnyTime News" },
-    replyTo: { email: "anytimenews101@gmail.com", name: "AnyTime News" },
+    sender: { email: `${process.env.SMTP_SENDER_EMAIL}`, name: "AnyTime News" },
+    replyTo: {
+      email: `${process.env.SMTP_SENDER_EMAIL}`,
+      name: "AnyTime News",
+    },
     to: users,
     htmlContent: `<html><body><h1>${title}</h1><p>${content}</p></body></html>`,
     params: { bodyMessage: "Made just for you!" },
