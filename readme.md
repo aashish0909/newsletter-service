@@ -61,15 +61,18 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
 ## Configure app
 
 - Create a `.env` file in the head directory of the project.
-- Open the file and add the following fields.
+- Open the file and add the following fields and save the file.
 
->     DB_URI = " "
->     SMTP_API_KEY = " "
->     SMTP_SENDER_EMAIL = " "
->     DB_URI - This is the URL of the mongoDB Database you would like to use.
+`DB_URI = " "`
+`SMTP_API_KEY = " "`
+`SMTP_SENDER_EMAIL = " "`
+
+> DB_URI - This is the URL of the mongoDB Database you would like to use.
+
 - The project is using [Sendinblue](https://www.sendinblue.com/) as its SMTP service.
 - You can get the API key and the sender email address from [Sendinblue](https://www.sendinblue.com/).
 >SMTP_API_KEY - Sendinblue API key
+>
 >SMTP_SENDER_EMAIL - Sendinblue registered sender email address
 
 
