@@ -74,6 +74,7 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
 >SMTP_API_KEY - Sendinblue API key
 >
 >SMTP_SENDER_EMAIL - Sendinblue registered sender email address
+![.env](./images/env.png)
 
 
 
